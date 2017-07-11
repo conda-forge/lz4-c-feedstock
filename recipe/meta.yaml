@@ -20,16 +20,16 @@ build:
   number: 0
   skip: True  # [win and not py35]
   features:
-    - vc14  # [win and py35]
+    - vc14  # [win and py>=35]
 
 requirements:
   build:
-    - toolchain
-    - python     # [win]
-    - vc 14      # [win and py35]
+    - toolchain  # [unix]
+    - python  # [win]
+    - vc 14   # [win and py>=35]
 
   run:
-    - vc 14      # [win and py35]
+    - vc 14   # [win and py>=35]
 
 test:
   requires:

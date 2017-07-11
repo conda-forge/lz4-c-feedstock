@@ -54,7 +54,9 @@ COPY %SRC_DIR%\lib\lz4frame.h %LIBRARY_INC%
 if errorlevel 1 exit 1
 COPY %BUILD_DIR%\liblz4_static.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
-COPY %BUILD_DIR%\liblz4.dll %LIBRARY_LIB%
+COPY %BUILD_DIR%\liblz4.dll %LIBRARY_BIN%
+if errorlevel 1 exit 1
+COPY %BUILD_DIR%\liblz4.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
 COPY %BUILD_DIR%\lz4.exe %LIBRARY_BIN%
 if errorlevel 1 exit 1

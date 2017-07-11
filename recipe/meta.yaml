@@ -17,8 +17,8 @@ source:
     - patches/0001-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
 
 build:
-  number: 0
   skip: True  # [win and not py35]
+  number: 1
   features:
     - vc14  # [win and py>=35]
 
@@ -53,7 +53,8 @@ test:
     - test -f ${PREFIX}/lib/liblz4.dylib  # [osx]
     - test -f ${PREFIX}/lib/liblz4.so     # [linux]
 
-    - if not exist %LIBRARY_LIB%\\liblz4.dll exit 1         # [win]
+    - if not exist %LIBRARY_BIN%\\liblz4.dll exit 1         # [win]
+    - if not exist %LIBRARY_LIB%\\liblz4.lib exit 1         # [win]
     - if not exist %LIBRARY_LIB%\\liblz4_static.lib exit 1  # [win]
 
     - test -f ${PREFIX}/lib/pkgconfig/liblz4.pc  # [unix]

@@ -1,6 +1,7 @@
 #!/bin/bash
 set -ex
 
+export CFLAGS="${CFLAGS} -O3 -fPIC"
 export LDFLAGS="${LDFLAGS} -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib"
 
 # Build

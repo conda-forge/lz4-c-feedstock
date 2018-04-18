@@ -4,6 +4,12 @@ set -ex
 export CFLAGS="${CFLAGS} -O3 -fPIC"
 export LDFLAGS="${LDFLAGS} -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib"
 
+# Need librt on Linux for time operations.
+if [ "$(uname)" == "Linux"  ]
+then
+  export LDFLAGS="${LDFLAGS} -lrt"
+fi
+
 # Build
 make -j${CPU_COUNT} PREFIX=${PREFIX}
 make -C tests datagen

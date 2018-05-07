@@ -1,8 +1,8 @@
 {% set pkg_name = "lz4-c" %}
 {% set author = "lz4" %}
 {% set name = "lz4" %}
-{% set version = "1.8.1" %}
-{% set sha256sum = "fc2de900b63cc6e708d5d79a1d961fbc23e13a0a16ad230f27533d637eb7b349" %}
+{% set version = "1.8.2" %}
+{% set sha256sum = "0963fbe9ee90acd1d15e9f09e826eaaf8ea0312e854803caf2db0a6dd40f4464" %}
 {% set build = 0 %}
 
 package:
@@ -19,7 +19,7 @@ source:
 
 build:
   skip: True  # [win and not py35]
-  number: {{ build }}
+  number: 0
   features:
     - vc14  # [win and py>=35]
 

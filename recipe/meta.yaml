@@ -1,8 +1,8 @@
 {% set pkg_name = "lz4-c" %}
 {% set author = "lz4" %}
 {% set name = "lz4" %}
-{% set version = "1.8.1" %}
-{% set sha256sum = "fc2de900b63cc6e708d5d79a1d961fbc23e13a0a16ad230f27533d637eb7b349" %}
+{% set version = "1.8.1.2" %}
+{% set sha256sum = "12f3a9e776a923275b2dc78ae138b4967ad6280863b77ff733028ce89b8123f9" %}
 {% set build = 0 %}
 
 package:

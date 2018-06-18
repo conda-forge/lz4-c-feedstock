@@ -19,7 +19,7 @@ source:
 
 build:
   skip: True  # [win and not py35]
-  number: 0
+  number: {{ build }}
   features:
     - vc14  # [win and py>=35]
 

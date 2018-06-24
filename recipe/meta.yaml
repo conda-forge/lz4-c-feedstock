@@ -18,19 +18,16 @@ source:
     - patches/0001-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
 
 build:
-  skip: True  # [win and not py35]
+  skip: True  # [win and vc<14]
   number: {{ build }}
-  features:
-    - vc14  # [win and py>=35]
 
 requirements:
   build:
-    - toolchain  # [unix]
-    - python  # [win]
-    - vc 14   # [win and py>=35]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
 
   run:
-    - vc 14   # [win and py>=35]
 
 test:
   requires:

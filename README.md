@@ -20,14 +20,16 @@ BSD license.
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/lz4-c-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/lz4-c-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/lz4-c-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/lz4-c-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/lz4-c-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/lz4-c-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/lz4-c-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/lz4-c-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/lz4-c-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/lz4-c-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/lz4-c-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/lz4-c-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/lz4-c/badges/version.svg)](https://anaconda.org/conda-forge/lz4-c)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/lz4-c/badges/downloads.svg)](https://anaconda.org/conda-forge/lz4-c)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-lz4--c-green.svg)](https://anaconda.org/conda-forge/lz4-c) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lz4-c.svg)](https://anaconda.org/conda-forge/lz4-c) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lz4-c.svg)](https://anaconda.org/conda-forge/lz4-c) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lz4-c.svg)](https://anaconda.org/conda-forge/lz4-c) |
 
 Installing lz4-c
 ================

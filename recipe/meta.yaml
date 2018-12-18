@@ -22,7 +22,7 @@ build:
   number: {{ build }}
   # https://abi-laboratory.pro/index.php?view=timeline&l=lz4
   run_exports:
-    - {{ pin_subpackage(name, max_pin='x.x.x') }}
+    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
 
 requirements:
   build:

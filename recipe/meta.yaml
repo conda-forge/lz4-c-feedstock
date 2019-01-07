@@ -3,7 +3,7 @@
 {% set name = "lz4" %}
 {% set version = "1.8.3" %}
 {% set sha256sum = "33af5936ac06536805f9745e0b6d61da606a1f8b4cc5c04dd3cbaca3b9b4fc43" %}
-{% set build = 1000 %}
+{% set build = 1001 %}
 
 package:
   name: {{ pkg_name }}
@@ -20,6 +20,9 @@ source:
 build:
   skip: True  # [win and vc<14]
   number: {{ build }}
+  # https://abi-laboratory.pro/index.php?view=timeline&l=lz4
+  run_exports:
+    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
 
 requirements:
   build:

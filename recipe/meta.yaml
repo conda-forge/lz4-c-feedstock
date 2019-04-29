@@ -16,6 +16,8 @@ source:
   patches:
     # fullbench build cause "an internal compiler error".
     - patches/0001-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
+    # Correctly detect Darwin, https://github.com/lz4/lz4/pull/696
+    - patches/696.patch  # [osx]
 
 build:
   skip: True  # [win and vc<14]

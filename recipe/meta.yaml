@@ -3,7 +3,6 @@
 {% set name = "lz4" %}
 {% set version = "1.9.1" %}
 {% set sha256sum = "f8377c89dad5c9f266edc0be9b73595296ecafd5bfa1000de148096c50052dc4" %}
-{% set build = 0 %}
 
 package:
   name: {{ pkg_name }}
@@ -21,7 +20,7 @@ source:
 
 build:
   skip: True  # [win and vc<14]
-  number: {{ build }}
+  number: 1
   # https://abi-laboratory.pro/index.php?view=timeline&l=lz4
   run_exports:
     - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
@@ -31,9 +30,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - make
-  host:
-
-  run:
 
 test:
   requires:
@@ -57,9 +53,9 @@ test:
     - test -f ${PREFIX}/lib/liblz4.dylib  # [osx]
     - test -f ${PREFIX}/lib/liblz4.so     # [linux]
 
-    - if not exist %LIBRARY_BIN%\\liblz4.dll exit 1         # [win]
-    - if not exist %LIBRARY_LIB%\\liblz4.lib exit 1         # [win]
-    - if not exist %LIBRARY_LIB%\\liblz4_static.lib exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\lz4.dll exit 1         # [win]
+    - if not exist %LIBRARY_LIB%\\lz4.lib exit 1         # [win]
+    - if not exist %LIBRARY_LIB%\\lz4_static.lib exit 1  # [win]
 
     - test -f ${PREFIX}/lib/pkgconfig/liblz4.pc  # [unix]
     - pkg-config --cflags --libs liblz4          # [unix]

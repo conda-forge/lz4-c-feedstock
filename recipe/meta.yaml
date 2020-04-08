@@ -20,6 +20,7 @@ source:
     - patches/696.patch  # [osx]
 
 build:
+  skip: True  # [win and vc<14]
   number: {{ build }}
   # https://abi-laboratory.pro/index.php?view=timeline&l=lz4
   run_exports:

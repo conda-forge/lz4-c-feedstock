@@ -1,9 +1,9 @@
 {% set pkg_name = "lz4-c" %}
 {% set author = "lz4" %}
 {% set name = "lz4" %}
-{% set version = "1.9.1" %}
-{% set sha256sum = "f8377c89dad5c9f266edc0be9b73595296ecafd5bfa1000de148096c50052dc4" %}
-{% set build = 1 %}
+{% set version = "1.9.2" %}
+{% set sha256sum = "658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc" %}
+{% set build = 0 %}
 
 package:
   name: {{ pkg_name }}
@@ -16,11 +16,9 @@ source:
   patches:
     # fullbench build cause "an internal compiler error".
     - patches/0001-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
-    # Correctly detect Darwin, https://github.com/lz4/lz4/pull/696
-    - patches/696.patch  # [osx]
 
 build:
-  skip: True  # [win and vc<14]
+  skip: true  # [win and vc<14]
   number: {{ build }}
   # https://abi-laboratory.pro/index.php?view=timeline&l=lz4
   run_exports:

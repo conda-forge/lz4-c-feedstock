@@ -4,9 +4,7 @@ set -ex
 export CFLAGS="${CFLAGS} -O3 -fPIC"
 export LDFLAGS="${LDFLAGS} -Wl,-rpath,${PREFIX}/lib -L${PREFIX}/lib"
 
-# Need librt on Linux for time operations.
-if [ "$(uname)" == "Linux"  ]
-then
+if [[ ${target_platform} =~ .*linux.* ]]; then
   export LDFLAGS="${LDFLAGS} -lrt"
 fi
 

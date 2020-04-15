@@ -12,7 +12,7 @@ set BUILD_DIR=%VSPROJ_DIR%\bin\%PLATFORM%_%CONFIGURATION%
 msbuild.exe /m ^
     /p:Configuration=%CONFIGURATION% ^
     /p:Platform=%PLATFORM% ^
-    /p:PlatformToolset=v140 ^
+    /p:PlatformToolset=v141 ^
     /t:Build ^
     %VSPROJ_DIR%\lz4.sln
 if errorlevel 1 exit 1

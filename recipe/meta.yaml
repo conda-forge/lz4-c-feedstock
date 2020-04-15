@@ -28,10 +28,9 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - make
+    - make  # [not win]
   host:
-
-  run:
+    - ripgrep
 
 test:
   requires:

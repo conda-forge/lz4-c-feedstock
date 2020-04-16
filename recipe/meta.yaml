@@ -30,6 +30,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}  # [not win]
     - make  # [not win]
+    - patch  # [unix]
+    - m2-patch  # [win]
+    - m2-gcc-libs  # [win]
   host:
     - ripgrep
 

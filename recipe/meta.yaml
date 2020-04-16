@@ -14,8 +14,9 @@ source:
   url: https://github.com/{{ author }}/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: {{ sha256sum }}
   patches:
-    # fullbench build cause "an internal compiler error".
-    - patches/0001-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
+    - patches/0001-Add-WindowsTargetPlatformVersion-of-10.0-and-lz4-exe.patch
+    # fullbench build used to cause "an internal compiler error".
+    # - patches/0002-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
 
 build:
   skip: true  # [win and vc<14]
@@ -27,7 +28,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('cxx') }}  # [not win]
     - make  # [not win]
   host:
     - ripgrep
@@ -60,9 +61,6 @@ test:
 
     - test -f ${PREFIX}/lib/pkgconfig/liblz4.pc  # [unix]
     - pkg-config --cflags --libs liblz4          # [unix]
-
-    - conda inspect linkages -p $PREFIX {{ pkg_name }}  # [unix]
-    - conda inspect objects -p $PREFIX {{ pkg_name }}   # [osx]
 
 about:
   home: https://www.lz4.org

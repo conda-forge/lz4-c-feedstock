@@ -19,11 +19,11 @@ Subject: [PATCH 1/2] Add WindowsTargetPlatformVersion of 10.0 and lz4
  create mode 100644 visual/VS2017/lz4/lz4.rc
  create mode 100644 visual/VS2017/lz4/lz4.vcxproj
 
-diff --git a/visual/VS2017/lz4/lz4.rc b/visual/VS2017/lz4/lz4.rc
+diff --git visual/VS2017/lz4/lz4.rc visual/VS2017/lz4/lz4.rc
 new file mode 100644
 index 0000000..c593edf
 --- /dev/null
-+++ b/visual/VS2017/lz4/lz4.rc
++++ visual/VS2017/lz4/lz4.rc
 @@ -0,0 +1,51 @@
 +// Microsoft Visual C++ generated resource script.
 +//
@@ -76,11 +76,11 @@ index 0000000..c593edf
 +END
 +
 +#endif
-diff --git a/visual/VS2017/lz4/lz4.vcxproj b/visual/VS2017/lz4/lz4.vcxproj
+diff --git visual/VS2017/lz4/lz4.vcxproj visual/VS2017/lz4/lz4.vcxproj
 new file mode 100644
 index 0000000..de7a714
 --- /dev/null
-+++ b/visual/VS2017/lz4/lz4.vcxproj
++++ visual/VS2017/lz4/lz4.vcxproj
 @@ -0,0 +1,189 @@
 +﻿<?xml version="1.0" encoding="utf-8"?>
 +<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">

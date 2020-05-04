@@ -3,7 +3,7 @@
 {% set name = "lz4" %}
 {% set version = "1.9.2" %}
 {% set sha256sum = "658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: {{ pkg_name }}
@@ -14,24 +14,30 @@ source:
   url: https://github.com/{{ author }}/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: {{ sha256sum }}
   patches:
-    # fullbench build cause "an internal compiler error".
-    - patches/0001-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
+    # Split into 2 patches due to a bug in conda-build
+    # - patches/0001-Add-WindowsTargetPlatformVersion-of-10.0-and-lz4-exe.patch
+    - patches/0001-Add-WindowsTargetPlatformVersion-of-10.0-and-lz4-exe.1.patch
+    - patches/0001-Add-WindowsTargetPlatformVersion-of-10.0-and-lz4-exe.2.patch
+    # fullbench build used to cause "an internal compiler error".
+    # - patches/0002-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
 
 build:
   skip: true  # [win and vc<14]
   number: {{ build }}
   # https://abi-laboratory.pro/index.php?view=timeline&l=lz4
   run_exports:
-    - {{ pin_subpackage(pkg_name, max_pin='x.x.x') }}
+    - {{ pin_subpackage(pkg_name, max_pin='x.x') }}
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - make
+    - {{ compiler('cxx') }}  # [not win]
+    - make  # [not win]
+    - patch  # [unix]
+    - m2-patch  # [win]
+    - m2-gcc-libs  # [win]
   host:
-
-  run:
+    - ripgrep
 
 test:
   requires:
@@ -62,9 +68,6 @@ test:
     - test -f ${PREFIX}/lib/pkgconfig/liblz4.pc  # [unix]
     - pkg-config --cflags --libs liblz4          # [unix]
 
-    - conda inspect linkages -p $PREFIX {{ pkg_name }}  # [unix]
-    - conda inspect objects -p $PREFIX {{ pkg_name }}   # [osx]
-
 about:
   home: https://www.lz4.org
   license: BSD-2-Clause
@@ -80,6 +83,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - mingwandroid
     - rmax
     - wesm
     - xhochy

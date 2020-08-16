@@ -3,7 +3,7 @@
 {% set name = "lz4" %}
 {% set version = "1.9.2" %}
 {% set sha256sum = "658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 package:
   name: {{ pkg_name }}
@@ -37,7 +37,7 @@ requirements:
     - m2-patch  # [win]
     - m2-gcc-libs  # [win]
   host:
-    - ripgrep
+  run:
 
 test:
   requires:

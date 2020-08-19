@@ -90,6 +90,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-lz4--c-green.svg)](https://anaconda.org/conda-forge/lz4-c) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lz4-c.svg)](https://anaconda.org/conda-forge/lz4-c) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lz4-c.svg)](https://anaconda.org/conda-forge/lz4-c) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lz4-c.svg)](https://anaconda.org/conda-forge/lz4-c) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-lz4--c--static-green.svg)](https://anaconda.org/conda-forge/lz4-c-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lz4-c-static.svg)](https://anaconda.org/conda-forge/lz4-c-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lz4-c-static.svg)](https://anaconda.org/conda-forge/lz4-c-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lz4-c-static.svg)](https://anaconda.org/conda-forge/lz4-c-static) |
 
 Installing lz4-c
 ================
@@ -100,10 +101,10 @@ Installing `lz4-c` from the `conda-forge` channel can be achieved by adding `con
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `lz4-c` can be installed with:
+Once the `conda-forge` channel has been enabled, `lz4-c, lz4-c-static` can be installed with:
 
 ```
-conda install lz4-c
+conda install lz4-c lz4-c-static
 ```
 
 It is possible to list all of the versions of `lz4-c` available on your platform with:

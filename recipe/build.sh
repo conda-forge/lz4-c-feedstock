@@ -30,3 +30,4 @@ fi
 
 # Install
 make install PREFIX=${PREFIX}
+rm ${PREFIX}/lib/liblz4.a

@@ -68,6 +68,8 @@ outputs:
         - pkg-config --cflags --libs liblz4          # [unix]
 
   - name: lz4-c-static
+    build:
+      activate_in_script: True
     script: build_static.sh  # [unix]
     script: bld_static.bat  # [win]
     test:

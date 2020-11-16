@@ -7,7 +7,7 @@ if "%ARCH%"=="32" (
     set PLATFORM=x64
 )
 set CONFIGURATION=Release
-set VSPROJ_DIR=%SRC_DIR%\visual\VS2017
+set VSPROJ_DIR=%SRC_DIR%\build\VS2017
 set BUILD_DIR=%VSPROJ_DIR%\bin\%PLATFORM%_%CONFIGURATION%
 
 msbuild.exe ^

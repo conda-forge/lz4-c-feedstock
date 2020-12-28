@@ -1,6 +1,6 @@
 {% set pkg_name = "lz4-c" %}
 {% set name = "lz4" %}
-{% set version = "1.9.2" %}
+{% set version = "1.9.3" %}
 
 package:
   name: {{ pkg_name }}
@@ -9,17 +9,13 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc
+  sha256: 030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1
   patches:
-    # Split into 2 patches due to a bug in conda-build
-    # - patches/0001-Add-WindowsTargetPlatformVersion-of-10.0-and-lz4-exe.patch
-    - patches/0001-Add-WindowsTargetPlatformVersion-of-10.0-and-lz4-exe.1.patch
-    - patches/0001-Add-WindowsTargetPlatformVersion-of-10.0-and-lz4-exe.2.patch
-    # fullbench build used to cause "an internal compiler error".
-    # - patches/0002-Do-not-build-tests-binaries-on-VS-project.patch  # [win]
+    # https://github.com/lz4/lz4/pull/962
+    - patches/0002-include-local-header-directory.patch  # [win]
 
 build:
-  number: 3
+  number: 0
 
 requirements:
   build:
@@ -69,7 +65,7 @@ outputs:
 
   - name: lz4-c-static
     build:
-      activate_in_script: True
+      activate_in_script: true
     script: build_static.sh  # [unix]
     script: bld_static.bat  # [win]
     test:

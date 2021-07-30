@@ -13,9 +13,10 @@ source:
   patches:
     # https://github.com/lz4/lz4/pull/962
     - patches/0002-include-local-header-directory.patch  # [win]
+    - patches/CVE-2021-3520.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:

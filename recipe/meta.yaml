@@ -7,13 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 0b0e3aa07c8c063ddf40b082bdf7e37a1562bda40a0ff5272957f3e987e0e54b
-  patches:
-    # https://github.com/lz4/lz4/pull/962
-    - patches/0002-include-local-header-directory.patch  # [win]
-    - patches/CVE-2021-3520.patch
 
 build:
   number: 0

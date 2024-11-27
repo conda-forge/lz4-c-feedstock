@@ -19,9 +19,9 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}  # [not win]
     - make  # [not win]
+    - cmake  # [win]
+    - ninja  # [win]
     - patch  # [unix]
-    - m2-patch  # [win]
-    - m2-gcc-libs  # [win]
   host:
   run:
 
@@ -73,6 +73,7 @@ outputs:
 
 about:
   home: https://www.lz4.org
+  dev_url: https://github.com/lz4/lz4
   license: BSD-2-Clause
   license_file: lib/LICENSE
   summary: Extremely Fast Compression algorithm

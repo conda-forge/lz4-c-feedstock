@@ -1,23 +1,16 @@
 :: This rougly follow what projects' appveyor file does.
 
-:: Build
-if "%ARCH%"=="32" (
-    set PLATFORM=Win32
-) else (
-    set PLATFORM=x64
-)
-set CONFIGURATION=Release
-set VSPROJ_DIR=%SRC_DIR%\build\VS2017
-set BUILD_DIR=%VSPROJ_DIR%\bin\%PLATFORM%_%CONFIGURATION%
 
-msbuild.exe ^
-  -m ^
-  -p:Configuration=%CONFIGURATION% ^
-  -p:Platform=%PLATFORM% ^
-  -p:PlatformToolset=v141 ^
-  -p:WindowsTargetPlatformVersion=10.0.17763.0 ^
-  -t:Build ^
-  %VSPROJ_DIR%\lz4.sln
+md build
+cd build
+
+cmake %CMAKE_ARGS% -GNinja ..\build\cmake
+if errorlevel 1 exit 1
+
+ninja
+if errorlevel 1 exit 1
+
+ninja install
 if errorlevel 1 exit 1
 
 :: Test.

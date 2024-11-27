@@ -1,13 +1,13 @@
-:: Build
-if "%ARCH%"=="32" (
-    set PLATFORM=Win32
-) else (
-    set PLATFORM=x64
-)
-set CONFIGURATION=Release
-set VSPROJ_DIR=%SRC_DIR%\build\VS2017
-set BUILD_DIR=%VSPROJ_DIR%\bin\%PLATFORM%_%CONFIGURATION%
+@echo on
+md build-static
+cd build-static
 
-COPY %BUILD_DIR%\liblz4_static.lib %LIBRARY_LIB%
+cmake %CMAKE_ARGS% -DBUILD_SHARED_LIBS=OFF -GNinja ..\build\cmake
+if errorlevel 1 exit 1
+
+ninja
+if errorlevel 1 exit 1
+
+ninja install
 if errorlevel 1 exit 1
 

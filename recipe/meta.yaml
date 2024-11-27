@@ -65,6 +65,11 @@ outputs:
       activate_in_script: true
     script: build_static.sh  # [unix]
     script: bld_static.bat  # [win]
+    requirements:
+      host:
+        - {{ pin_subpackage('lz4-c', exact=True) }}
+      run:
+        - {{ pin_subpackage('lz4-c', exact=True) }}
     test:
       commands:
         - test -f ${PREFIX}/lib/liblz4.a      # [unix]

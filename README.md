@@ -9,6 +9,8 @@ Package license: BSD-2-Clause
 
 Summary: Extremely Fast Compression algorithm
 
+Development: https://github.com/lz4/lz4
+
 LZ4 is lossless compression algorithm, providing compression speed at 400
 MB/s per core (0.16 Bytes/cycle). It features an extremely fast decoder,
 with speed in multiple GB/s per core (0.71 Bytes/cycle). A high compression

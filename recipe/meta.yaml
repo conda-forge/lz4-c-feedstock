@@ -66,6 +66,11 @@ outputs:
     script: build_static.sh  # [unix]
     script: bld_static.bat  # [win]
     requirements:
+      build:
+        - {{ compiler('c') }}  # [win]
+        - {{ stdlib("c") }}    # [win]
+        - cmake                # [win]
+        - ninja                # [win]
       host:
         - {{ pin_subpackage('lz4-c', exact=True) }}
       run:

@@ -78,7 +78,7 @@ outputs:
     test:
       commands:
         - test -f ${PREFIX}/lib/liblz4.a      # [unix]
-        - if not exist %LIBRARY_LIB%\liblz4_static.lib exit 1  # [win]
+        - if not exist %LIBRARY_LIB%\lz4_static.lib exit 1  # [win]
 
 
 about:

@@ -4,17 +4,13 @@
 md build
 cd build
 
-cmake %CMAKE_ARGS% -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -GNinja ..\build\cmake
+cmake %CMAKE_ARGS% -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF -GNinja ..\build\cmake
 if errorlevel 1 exit 1
 
 ninja
 if errorlevel 1 exit 1
 
 ninja install
-if errorlevel 1 exit 1
-
-# Delete the static library from the default installation.
-del %LIBRARY_PREFIX%\lib\lz4_static.lib
 if errorlevel 1 exit 1
 
 :: Test.

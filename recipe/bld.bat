@@ -14,12 +14,13 @@ ninja install
 if errorlevel 1 exit 1
 
 :: Test.
-if errorlevel 1 exit 1
-lz4 -i1b lz4.exe
-if errorlevel 1 exit 1
-lz4 -i1b5 lz4.exe
-if errorlevel 1 exit 1
-lz4 -i1b10 lz4.exe
-if errorlevel 1 exit 1
-lz4 -i1b15 lz4.exe
-if errorlevel 1 exit 1
+if not "%CONDA_BUILD_CROSS_COMPILATION%" == "1" (
+  lz4 -i1b lz4.exe
+  if errorlevel 1 exit 1
+  lz4 -i1b5 lz4.exe
+  if errorlevel 1 exit 1
+  lz4 -i1b10 lz4.exe
+  if errorlevel 1 exit 1
+  lz4 -i1b15 lz4.exe
+  if errorlevel 1 exit 1
+)

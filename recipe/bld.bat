@@ -4,7 +4,8 @@
 md build
 cd build
 
-cmake %CMAKE_ARGS% -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF -GNinja ..\build\cmake
+:: Build both, shared and static library, so that one can link against the preferred on in this setting.s
+cmake %CMAKE_ARGS% -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -GNinja ..\build\cmake
 if errorlevel 1 exit 1
 
 ninja

@@ -7,7 +7,7 @@
 
 [project]
 name = "lz4-c-feedstock"
-version = "3.47.2"  # conda-smithy version used to generate this file
+version = "3.51.1"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/lz4-c-feedstock"
 authors = ["@conda-forge/lz4-c"]
 channels = ["conda-forge"]

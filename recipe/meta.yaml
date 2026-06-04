@@ -11,16 +11,16 @@ source:
   sha256: 537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}  # [not win]
-    - make  # [not win]
-    - cmake  # [win]
-    - ninja  # [win]
+    - cmake
+    - ninja
+    - pkg-config
     - patch  # [unix]
   host:
   run:
@@ -33,9 +33,11 @@ outputs:
         - {{ pin_subpackage(pkg_name, max_pin='x.x') }}
     test:
       requires:
+        - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - pkg-config
-        - cmake  # [win]
-        - ninja  # [win]
+        - cmake
+        - ninja
       files:
         - test_shared_cmake
       commands:
@@ -63,9 +65,9 @@ outputs:
         - test -f ${PREFIX}/lib/pkgconfig/liblz4.pc  # [unix]
         - pkg-config --cflags --libs liblz4
 
-        - pushd test_shared_cmake  # [win]
-        - cmake -GNinja .          # [win]
-        - popd                     # [win]
+        - pushd test_shared_cmake
+        - cmake -GNinja .
+        - popd
 
 
   - name: lz4-c-static
@@ -77,10 +79,10 @@ outputs:
     script: bld_static.bat       # [win]
     requirements:
       build:
-        - {{ compiler('c') }}  # [win]
-        - {{ stdlib("c") }}    # [win]
-        - cmake                # [win]
-        - ninja                # [win]
+        - {{ compiler('c') }}
+        - {{ stdlib('c') }}
+        - cmake
+        - ninja
       host:
         - {{ pin_subpackage('lz4-c', exact=True) }}
       run:
@@ -89,15 +91,17 @@ outputs:
       files:
         - test_static_cmake
       requires:
-        - cmake  # [win]
-        - ninja  # [win]
+        - {{ compiler('c') }}
+        - {{ stdlib('c') }}
+        - cmake
+        - ninja
       commands:
         - test -f ${PREFIX}/lib/liblz4.a      # [unix]
         - if not exist %LIBRARY_LIB%\lz4_static.lib exit 1  # [win]
 
-        - pushd test_static_cmake  # [win]
-        - cmake -GNinja .          # [win]
-        - popd                     # [win]
+        - pushd test_static_cmake
+        - cmake -GNinja .
+        - popd
 
 about:
   home: https://www.lz4.org

@@ -20,8 +20,7 @@ outputs:
   - package:
       name: lz4-c
     build:
-      script:
-        file: ${{ 'build.sh' if unix else 'build.bat' if win else '' }}
+      script: build
     requirements:
       build:
         - ${{ compiler('c') }}
@@ -93,8 +92,7 @@ outputs:
       always_include_files:
         - if: win
           then: Library/lib/cmake/lz4
-      script:
-        file: ${{ 'build_static.sh' if unix else 'bld_static.bat' if win else '' }}
+      script: build_static
     requirements:
       build:
         - ${{ compiler('c') }}

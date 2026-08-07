@@ -61,7 +61,12 @@ outputs:
             - test_shared_cmake
         requirements:
           run:
-            - pkg-config
+            - if: not (linux and riscv64)
+              then: pkg-config
+            - if: win
+              then: ${{ compiler('c') }}
+            - if: win
+              then: ${{ stdlib('c') }}
             - if: win
               then: cmake
             - if: win
@@ -74,7 +79,8 @@ outputs:
             then: lz4cat -h
           - if: unix
             then: unlz4 -h
-          - pkg-config --cflags --libs liblz4
+          - if: not (linux and riscv64)
+            then: pkg-config --cflags --libs liblz4
           - if: win
             then: pushd test_shared_cmake
           - if: win
@@ -118,6 +124,10 @@ outputs:
             - test_static_cmake
         requirements:
           run:
+            - if: win
+              then: ${{ compiler('c') }}
+            - if: win
+              then: ${{ stdlib('c') }}
             - if: win
               then: cmake
             - if: win

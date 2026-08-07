@@ -3,7 +3,7 @@ About lz4-c-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/lz4-c-feedstock/blob/main/LICENSE.txt)
 
-Home: https://www.lz4.org
+Home: https://www.lz4.org/
 
 Package license: BSD-2-Clause
 
@@ -17,7 +17,6 @@ with speed in multiple GB/s per core (0.71 Bytes/cycle). A high compression
 derivative, called LZ4_HC, is available, trading customizable CPU time for
 compression ratio. LZ4 library is provided as open source software using a
 BSD license.
-
 
 Current build status
 ====================

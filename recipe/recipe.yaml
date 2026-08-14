@@ -155,6 +155,7 @@ about:
   repository: https://github.com/lz4/lz4
 
 extra:
+  feedstock-name: lz4-c
   recipe-maintainers:
     - mingwandroid
     - rmax

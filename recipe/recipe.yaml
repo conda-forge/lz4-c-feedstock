@@ -29,10 +29,8 @@ outputs:
           then: ${{ compiler('cxx') }}
         - if: not win
           then: make
-        - if: win
-          then: cmake
-        - if: win
-          then: ninja
+        - cmake
+        - ninja
         - if: unix
           then: patch
       # https://abi-laboratory.pro/index.php?view=timeline&l=lz4
@@ -50,6 +48,8 @@ outputs:
             exists:
               - if: unix
                 then: lib/pkgconfig/liblz4.pc
+              - if: unix
+                then: lib/cmake/lz4/lz4Config.cmake
             not_exists:
               - if: unix
                 then: lib/liblz4.a
@@ -62,14 +62,10 @@ outputs:
           run:
             - if: not (linux and riscv64)
               then: pkg-config
-            - if: win
-              then: ${{ compiler('c') }}
-            - if: win
-              then: ${{ stdlib('c') }}
-            - if: win
-              then: cmake
-            - if: win
-              then: ninja
+            - ${{ compiler('c') }}
+            - ${{ stdlib('c') }}
+            - cmake
+            - ninja
         script:
           - lz4 -h
           - if: unix
@@ -80,18 +76,16 @@ outputs:
             then: unlz4 -h
           - if: not (linux and riscv64)
             then: pkg-config --cflags --libs liblz4
-          - if: win
-            then: pushd test_shared_cmake
-          - if: win
-            then: cmake -GNinja .
-          - if: win
-            then: popd
+          - pushd test_shared_cmake
+          - cmake -GNinja .
+          - popd
   - package:
       name: lz4-c-static
     build:
       always_include_files:
         - if: win
           then: Library/lib/cmake/lz4
+          else: lib/cmake/lz4
       script: build_static
     requirements:
       build:
@@ -101,10 +95,8 @@ outputs:
           then: ${{ compiler('cxx') }}
         - if: not win
           then: make
-        - if: win
-          then: cmake
-        - if: win
-          then: ninja
+        - cmake
+        - ninja
       host:
         - ${{ pin_subpackage('lz4-c', exact=True) }}
       run:
@@ -122,21 +114,14 @@ outputs:
             - test_static_cmake
         requirements:
           run:
-            - if: win
-              then: ${{ compiler('c') }}
-            - if: win
-              then: ${{ stdlib('c') }}
-            - if: win
-              then: cmake
-            - if: win
-              then: ninja
+            - ${{ compiler('c') }}
+            - ${{ stdlib('c') }}
+            - cmake
+            - ninja
         script:
-          - if: win
-            then: pushd test_static_cmake
-          - if: win
-            then: cmake -GNinja .
-          - if: win
-            then: popd
+          - pushd test_static_cmake
+          - cmake -GNinja .
+          - popd
 
 about:
   license: BSD-2-Clause
